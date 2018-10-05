@@ -2,4 +2,34 @@ Taken from https://www.javacodegeeks.com/
 
 IO vs NIO:
 Stream oriented vs uses buffers
-Blocking in processing vs 
+Blocking in processing vs non blocking in processing
+
+IO: good for high data volume && low simultaneous open file descriptor counts (less client connections with more data chunks per connection)
+NIO: good for less data volume && high simultaneous open file descriptor counts (more connections with smaller / infrequent "chunks" of data
+
+NIO: can be used with server / machine resources
+
+-Buffers: A container to hold data for the purposes of reading and or writing.
+-Channels: An abstraction for dealing with an open connection to some component that is performing some kind of IO operation at a hardware level.
+-Charsets: Charsets, decoders and encoders for translating between bytes and unicode.
+-Selectors: A means to work with multiple channels via one abstraction.
+
+Buffer <- ByteBuffer, CharBuffer, DoubleBuffer, FloatBuffer, IntBuffer, LongBuffer, ShortBuffer
+
+Buffer:
+-container for a fixed size of data of a specific primitive type (char, byte, int, long, float etc)
+-A buffer has 
+	-a content 
+	-a position (index of next element to read or write)
+	-a limit (index of element that must not be read or written)
+	-capacity (number of elements it contains)(the total capacity the Buffer can hold with regard to content)
+(depends on the type of the Buffer: CharBuffer capacity is measured in characters and ByteBuffer is measured in Bytes)
+-Can flip (invert position and limit when toggling the IO operation on a buffer - write out to console what we just read from a Channel into the Buffer), 
+rewind (sets position to 0 and leaves limit unchanged in order to re-read the buffer), 
+mark (bookmarks a position in the Buffer) and
+reset (resets the position to the previous mark)(Stream can't be?)
+
+-A content is put into a Buffer (read from a channel or put it directly into the Buffer) (to write it to a channel)
+-The cursor can be advanced through the content of the Buffer as we read or write.
+-A buffer is flipped to change our IO operation on the Buffer (go from reading to writing)
+-
