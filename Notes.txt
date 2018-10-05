@@ -1,0 +1,5 @@
+Taken from https://www.javacodegeeks.com/
+
+IO vs NIO:
+Stream oriented vs uses buffers
+Blocking in processing vs 
